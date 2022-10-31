@@ -24,7 +24,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 //route handlers ? *
-app.use('/', indexRouter);
+app.get('/', indexRouter);
 app.use('/games', gamesRouter);
 
 //Search up about process.env.PORT
