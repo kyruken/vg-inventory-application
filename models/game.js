@@ -6,15 +6,15 @@ const gameSchema = new mongoose.Schema({
         required: true
     },
     developer: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: "developer"
+        ref: "Developer"
     },
     esrb: String,
-    genre: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: "genre"
-    },
+    genre: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Genre"
+    }],
     release: {
         type: Date,
         required: true
