@@ -5,16 +5,6 @@ const gameSchema = require('../models/game');
 
 const router = express.Router();
 
-run();
-function run() {
-    const game = new gameSchema({
-        title: "Mario",
-        developer: "Nintendo",
-        release: 1998
-    })
-      // const user = new User({name: "Yungler", age: 21, email: "boloman@gmail.com"});
-    game.save();
-}
 router.get('/', (req, res) => {
     res.render('game/game_list');
 })
