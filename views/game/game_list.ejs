@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Games list</h2>
-    <p></p>
-</body>
-</html>
+<h2>Games list</h2>
+<% games %>
+<% for (let x = 0; x < games.length; x++) { %>
+    <h3><%= games[x].title %> </h3>
+    <p>Developer: <%= games[x].developer.name %></p>
+    <!-- Genre is an array, therefore have to put genre[0] for the first result-->
+    <p>Genre: <%= games[x].genre[0].name %> </p> 
+    <p>Release: <%= games[x].release %> </p> 
+    <p>Price: $<%= games[x].price %> </p> 
+
+<% } %>
+
+<p>isthisworking</p>
