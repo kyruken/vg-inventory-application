@@ -1,11 +1,15 @@
-<h2>Add a game</h2>
+<h2><%= name %></h2>
 <form>
     <label>
         <input type="text" name="title" placeholder="title">
     </label>
     <label>
         <select name="developer" id="developer">
-            <option>Heemerdingers</option>
+            <% for (let x = 0; x < result.developers.length; x++) { %>
+                <option><%= result.developers[x].name %></option>
+
+
+            <% } %>
         </select>
     </label>
     <label>
@@ -18,7 +22,10 @@
         </select>
     </label>
     <label>
-        <input type="checkbox" name="genre" placeholder="genre">Fantasy
+        <% for (let x = 0; x < result.genres.length; x++) { %>
+            <%= result.genres[x].name %>
+            <input type="checkbox" name="genre" placeholder="genre" value="<%=result.genres[x].name%>"">
+        <% } %>
     </label>
     <label>
         <input type="date" name="release" placeholder="release">
