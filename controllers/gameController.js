@@ -13,9 +13,9 @@ exports.index = (req, res) => {
             .exec(callback);
         },
     }, (err, results) => {
-        if (err) throw err;
-
-        console.log(results);
+        if(err) {
+            return next(err);
+        }
         res.render('./game/game_list', {
             games: results.games
         });
@@ -29,7 +29,9 @@ exports.game_detail_get = (req, res) => {
     .populate('developer')
     .populate('genre')
     .exec((err, result) => {
-        console.log(result);
+        if(err) {
+            return next(err);
+        }
         res.render('./game/game_detail', {game: result[0]})
     })
 }
@@ -50,14 +52,14 @@ exports.game_form_get = (req, res) => {
             .exec(callback);
         },
     }, (err, result) => {
-        console.log(result);
+        if(err) {
+            return next(err);
+        }
         res.render('./game/game_form', 
         {result: result,
          name: "Add a game"
         });
-
     })
-
 }
 
 exports.game_form_post = (req, res) => {
