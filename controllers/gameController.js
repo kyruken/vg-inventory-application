@@ -1,10 +1,10 @@
 const async = require('async');
 //Model
 const Game = require('../models/game');
-const developerSchema = require('../models/developer');
-
+const Developer = require('../models/developer');
+const Genre = require('../models/genre');
 exports.index = (req, res) => {
-    
+
     async.parallel({
         games(callback){
             Game.where("name")
@@ -35,7 +35,29 @@ exports.game_detail_get = (req, res) => {
 }
 
 exports.game_form_get = (req, res) => {
-    res.render('./game/game_form')
+    //we need to get all developers
+    //all genres
+    async.parallel({
+        developers(callback) {
+            Developer.find({})
+            .select('name')
+            .exec(callback);
+
+        },
+        genres(callback) {
+            Genre.find({})
+            .select('name')
+            .exec(callback);
+        },
+    }, (err, result) => {
+        console.log(result);
+        res.render('./game/game_form', 
+        {result: result,
+         name: "Add a game"
+        });
+
+    })
+
 }
 
 exports.game_form_post = (req, res) => {
