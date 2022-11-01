@@ -23,7 +23,7 @@ const gameSchema = new mongoose.Schema({
 })
 
 gameSchema.virtual("url").get(function() {
-    return `/games/game/${this._id}`;
+    return `/games/${this._id}`;
 })
 
 module.exports = mongoose.model("Game", gameSchema);
