@@ -9,7 +9,13 @@ const router = express.Router();
 
 //game routes
 router.get('/', gameController.index);
-router.get('/:id', gameController.game_detail);
+router.get('/game/:id', gameController.game_detail_get);
+
+router.get('/game_form/create', gameController.game_form_get);
+router.post('/game_form/create', gameController.game_form_post);
+
+router.get('/game_delete/delete', gameController.game_delete_get);
+router.post('/game_delete/delete', gameController.game_delete_post);
 
 
 
