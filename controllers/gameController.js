@@ -1,13 +1,13 @@
 const async = require('async');
 //Model
-const gameSchema = require('../models/game');
+const Game = require('../models/game');
 const developerSchema = require('../models/developer');
 
 exports.index = (req, res) => {
 
     async.parallel({
         games(callback){
-            gameSchema.where("name")
+            Game.where("name")
             .populate("developer")
             .populate("genre")
             .exec(callback);
@@ -22,3 +22,19 @@ exports.index = (req, res) => {
 
     })
 }
+
+exports.game_detail = (req, res) => {
+    Game.where('_id')
+    .equals(req.params.id)
+    .populate('developer')
+    .populate('genre')
+    .exec((err, result) => {
+        console.log(result);
+        res.render('./game/game_detail', {game: result[0]})
+    })
+
+
+    
+
+}
+
