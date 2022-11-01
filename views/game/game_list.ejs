@@ -1,6 +1,7 @@
 <h2>Games list</h2>
 <% for (let x = 0; x < games.length; x++) { %>
     <h3><a href='<%= games[x].url %>'><%= games[x].title %> </a></h3>
+    <p>price:<%= games[x].price %></p>
 
 <% } %>
 
