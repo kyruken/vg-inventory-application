@@ -58,6 +58,7 @@ exports.game_form_get = (req, res) => {
         }
         res.render('./game/game_form', 
         {result: result,
+         game: result.game ? result.game : {},
          name: "Add a game"
         });
     })
@@ -146,4 +147,35 @@ exports.game_delete_post = (req, res) => {
     Game.findByIdAndDelete(req.params.id, (err) => {
         res.redirect("/");
     })
+}
+
+exports.game_update_get = (req, res) => {
+    async.parallel(
+        {
+            game(callback) {
+                Game.findById(req.params.id).exec(callback);
+            },
+            developers(callback) {
+                Developer.find({})
+                .select("name")
+                .exec(callback);
+                
+            },
+
+            genres(callback) {
+                Genre.find({})
+                .select("name")
+                .exec(callback);
+            }
+        }, (err, results) => {
+            console.log(results);
+            res.render(`./game/game_form`, {result: results, game: results.game, name: "Update game"});
+        }
+    )
+
+    
+}
+
+exports.game_update_post = (req, res) => {
+
 }
