@@ -57,7 +57,8 @@ exports.game_form_get = (req, res) => {
             return next(err);
         }
         res.render('./game/game_form', 
-        {result: result,
+        {developers: result.developers,
+         genres: result.genres,
          name: "Add a game"
         });
     })
@@ -152,7 +153,10 @@ exports.game_update_get = (req, res) => {
     async.parallel(
         {
             game(callback) {
-                Game.findById(req.params.id).exec(callback);
+                Game.findById(req.params.id)
+                .populate("developer")
+                .populate("genre")
+                .exec(callback);
             },
             developers(callback) {
                 Developer.find({})
@@ -166,9 +170,12 @@ exports.game_update_get = (req, res) => {
                 .select("name")
                 .exec(callback);
             }
-        }, (err, results) => {
-            console.log(results);
-            res.render(`./game/game_form`, {result: results, game: results.game, name: "Update game"});
+        }, (err, result) => {
+            res.render(`./game/game_form`, {
+                developers: result.developers, 
+                genres: result.genres,
+                game: result.game, 
+                name: "Update game"});
         }
     )
 
