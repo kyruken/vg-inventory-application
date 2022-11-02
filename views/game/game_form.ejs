@@ -6,7 +6,7 @@
     <label>
         <select name="developer" id="developer">
             <% for (let x = 0; x < result.developers.length; x++) { %>
-                <option><%= result.developers[x].name %></option>
+                <option value="<%= result.developers[x]._id %>"><%= result.developers[x].name %></option>
 
 
             <% } %>
@@ -24,7 +24,7 @@
     <label>
         <% for (let x = 0; x < result.genres.length; x++) { %>
             <%= result.genres[x].name %>
-            <input type="checkbox" name="genre" placeholder="genre" value="<%=result.genres[x].name%>"">
+            <input type="checkbox" name="genre" placeholder="genre" value="<%=result.genres[x]._id%>"">
         <% } %>
     </label>
     <label>
