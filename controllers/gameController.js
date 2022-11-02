@@ -1,4 +1,5 @@
 const async = require('async');
+const {body, validationResult } = require('express-validator');
 //Model
 const Game = require('../models/game');
 const Developer = require('../models/developer');
@@ -62,9 +63,75 @@ exports.game_form_get = (req, res) => {
     })
 }
 
-exports.game_form_post = (req, res) => {
-    res.render('./game/game_form')
-}
+exports.game_form_post = [
+    (req, res, next) => {
+        if(!Array.isArray(req.body.genre)) {
+            req.body.genre = typeof req.body.genre === "undefined" ? [] : [req.body.genre];
+        }
+        next();
+    }, 
+
+    body("title", "Title must not be empty.")
+    .trim()
+    .isLength({min: 1})
+    .escape(),
+    body("developer", "Developer must not be empty.")
+    .trim()
+    .isLength({min: 1})
+    .escape(),
+    body("esrb").escape(),
+    body("genre.*").escape(),
+    body("release", "Invalid release date")
+    .isISO8601()
+    .toDate(),
+    
+    (req, res, next) => {
+        const errors = validationResult(req);
+        
+        if(!errors.isEmpty()) {
+            //if theres errors, reload the form page again with all the dev and genre data
+            async.parallel({
+                developers(callback) {
+                    Developer.find({})
+                    .select('name')
+                    .exec(callback);
+        
+                },
+                genres(callback) {
+                    Genre.find({})
+                    .select('name')
+                    .exec(callback);
+                },
+            }, (err, result) => {
+                if(err) {
+                    return next(err);
+                }
+                res.render('./game/game_form', 
+                {result: result,
+                 name: "Add a game"
+                });
+            })
+            return;
+        }
+
+        const newGame = new Game({
+            title: req.body.title,
+            developer: req.body.developer,
+            esrb: req.body.esrb,
+            genre: req.body.genre,
+            release: req.body.release,
+            price: req.body.price
+        })
+
+        newGame.save((err) => {
+            if (err) {
+                return next(err);
+            }
+            //success then redirect to new game 
+            res.redirect(newGame.url);
+        })
+    }
+]
 
 exports.game_delete_get = (req, res) => {
     res.render('./game/game_delete')
