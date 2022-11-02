@@ -58,7 +58,6 @@ exports.game_form_get = (req, res) => {
         }
         res.render('./game/game_form', 
         {result: result,
-         game: result.game ? result.game : {},
          name: "Add a game"
         });
     })
