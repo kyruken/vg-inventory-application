@@ -133,8 +133,13 @@ exports.game_form_post = [
     }
 ]
 
-exports.game_delete_get = (req, res) => {
-    res.render('./game/game_delete')
+exports.game_delete_get = (req, res, next) => {
+    Game.findById(req.params.id, (err, result) => {
+        if (err) {
+            return next(err);
+        }
+        res.render('./game/game_delete', {game: result});
+    })
 }
 
 exports.game_delete_post = (req, res) => {
