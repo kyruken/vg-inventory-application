@@ -1,12 +1,26 @@
 <h2><%= name %></h2>
 <form method="POST" action=''>
     <label>
-        <input type="text" name="title" placeholder="title">
+        <input type="text" name="title" placeholder="title"
+        <% if (locals.game) { %>
+            value="<%= game.title %>" >
+
+        <% } %>
     </label>
     <label>
         <select name="developer" id="developer">
-            <% for (let x = 0; x < result.developers.length; x++) { %>
-                <option value="<%= result.developers[x]._id %>"><%= result.developers[x].name %></option>
+            <% for (let x = 0; x < developers.length; x++) { %>
+                <!-- We check if our game developer's name object matches the result developer's name object-->
+                <!-- if they match, we add selected to the option -->
+                <!-- we use locals.game which is always true, and use && to check other statement which can be falsy-->
+                <!-- Had a hard time figuring out how to have the update_get work with create_get-->
+                <option value="<%= developers[x]._id %>" 
+                    <% if (locals.game && game.developer.name === developers[x].name) {%>
+                        selected
+                        <% } %>
+                        >
+                    <%= developers[x].name %>
+                </option>
 
 
             <% } %>
@@ -22,9 +36,9 @@
         </select>
     </label>
     <label>
-        <% for (let x = 0; x < result.genres.length; x++) { %>
-            <%= result.genres[x].name %>
-            <input type="checkbox" name="genre" placeholder="genre" value="<%=result.genres[x]._id%>"">
+        <% for (let x = 0; x < genres.length; x++) { %>
+            <%= genres[x].name %>
+            <input type="checkbox" name="genre" placeholder="genre" value="<%=genres[x]._id%>"">
         <% } %>
     </label>
     <label>
