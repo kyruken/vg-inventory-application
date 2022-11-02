@@ -5,6 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
+const logger = require('morgan');
 const app = express();
 
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true});
@@ -22,6 +23,7 @@ app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
+app.use(logger('dev'));
 
 //route handlers ? *
 app.get('/', indexRouter);
