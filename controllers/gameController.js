@@ -143,5 +143,7 @@ exports.game_delete_get = (req, res, next) => {
 }
 
 exports.game_delete_post = (req, res) => {
-    res.render('./game/game_delete')
+    Game.findByIdAndDelete(req.params.id, (err) => {
+        res.redirect("/");
+    })
 }

@@ -1,8 +1,9 @@
 <h2>Deleting game</h2>
 
-<form action="POST" action="">
-    <h3>Are you sure you want to delete this game?</h3>
-    <p> <%= game.title %></p>
-    <p> $<%= game.price %></p>
+<h3>Are you sure you want to delete this game?</h3>
+<p> <%= game.title %></p>
+<p> $<%= game.price %></p>
+<form method="POST" action="">
+    <input type="hidden" id="gameid" name="_id" required="true", value="<%= game._id %>">
     <button type="submit">Delete</button>
 </form>
