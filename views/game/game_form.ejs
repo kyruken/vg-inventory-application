@@ -55,9 +55,18 @@
         </select>
     </label>
     <label>
+        <!-- Used two for loops, I don't really like doing it this way -->
+        <!-- Is there a more optimal way to solve this? -->
         <% for (let x = 0; x < genres.length; x++) { %>
             <%= genres[x].name %>
-            <input type="checkbox" name="genre" placeholder="genre" value="<%=genres[x]._id%>"">
+            <input type="checkbox" name="genre" placeholder="genre" value="<%=genres[x]._id%>"
+            <% for (let y = 0; y < game.genre.length; y++) { %>
+                <% if (game.genre[y].name === genres[x].name) { %>
+                    checked
+                    <% } %>
+            <% } %>
+            >
+
         <% } %>
     </label>
     <label>
