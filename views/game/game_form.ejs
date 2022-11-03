@@ -1,4 +1,5 @@
 <h2><%= name %></h2>
+<h3><%= game %></h3>
 <form method="POST" action=''>
     <label>
         <input type="text" name="title" placeholder="title"
@@ -29,10 +30,28 @@
     <label>
         ESRB:
         <select name="esrb" id="esrb">
-            <option>E</option>
-            <option>E10</option>
-            <option>T</option>
-            <option>M</option>
+            <option
+            <% if (locals.game && game.esrb === "E")  { %> 
+                selected
+            <% } %>
+            >E
+        </option>
+            <option
+            <% if (locals.game && game.esrb === "E10")  { %> 
+                selected
+            <% } %>
+            >E10
+        </option>
+            <option <% if (locals.game && game.esrb === "T")  { %> 
+                selected
+            <% } %>
+            >T
+        </option>
+            <option <% if (locals.game && game.esrb === "T")  { %> 
+                selected
+            <% } %>
+            >M
+            </option>
         </select>
     </label>
     <label>
