@@ -22,6 +22,8 @@ router.post('/game_update/:id', gameController.game_update_post);
 
 
 router.get('/developers', developerController.index);
+router.get('/developer/:id', developerController.developer_detail_get);
+
 router.get('/genres', genreController.index);
 
 
