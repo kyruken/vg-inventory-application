@@ -56,23 +56,13 @@
     <label>
         <!-- Used two for loops, I don't really like doing it this way -->
         <!-- Is there a more optimal way to solve this? -->
-        <% for (let x = 0; x < genres.length; x++) { %>
-            <%= genres[x].name %>
-            <input type="checkbox" name="genre" placeholder="genre" value="<%=genres[x]._id%>"
-            <% for (let y = 0; y < game.genre.length; y++) { %>
-                <% if (game.genre[y].name === genres[x].name) { %>
-                    checked
-                    <% } %>
-            <% } %>
-            >
-
-        <% } %>
     </label>
     <label>
-        <input type="date" name="release" placeholder="release" value="<%= game.date_formatted %>">
+        <!-- use locals.game to check if something is undefined, if you use game it gives EJS an error -->
+        <input type="date" name="release" placeholder="release" value="<%= undefined===locals.game ? '' : game.date_formatted %>">
     </label>
     <label>
-        <input type="number" name="price" placeholder="price" value="<%= game.price %>">
+        <input type="number" name="price" placeholder="price" value="<%= undefined===locals.game ? '' : game.price %>">
     </label>
     <button type="submit">Submit</button>
 </form>
