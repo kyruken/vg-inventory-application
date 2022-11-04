@@ -34,4 +34,9 @@ gameSchema.virtual("date_formatted").get(function() {
     return `${year}-${month}-${day}`;
 })
 
+gameSchema.virtual("date").get(function() {
+    let date = DateTime.fromJSDate(this.release).toLocaleString(DateTime.DATE_FULL);
+    return date;
+})
+
 module.exports = mongoose.model("Game", gameSchema);
