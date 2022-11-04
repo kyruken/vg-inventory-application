@@ -194,7 +194,15 @@ exports.game_update_get = (req, res) => {
 
 exports.game_update_post = (req, res, next) => {
     /* Maybe add field validations later on? */
-    Game.findByIdAndUpdate(req.params.id, req.body, (err, updatedGame) => {
+    const newGame = new Game({
+        title: req.title,
+        developer: req.developer,
+        esrb: req.esrb,
+        genre: typeof req.body.genre === "undefined" ? [] : req.body.genre,
+        _id: req.params.id
+    });
+
+    Game.findByIdAndUpdate(req.params.id, newGame, (err, updatedGame) => {
         if(err) {
             return next(err);
         }
