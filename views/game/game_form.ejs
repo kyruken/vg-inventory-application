@@ -56,7 +56,7 @@
     <label>
         <% for (const x in genres) { %>
             <%= genres[x].name %>
-            <input type="checkbox" value="<% genres[x]._id %>" name="genre"
+            <input type="checkbox" value="<%= genres[x]._id %>" name="genre"
             <% if (genres[x].checked) { %>
                 checked 
             <% } %>
