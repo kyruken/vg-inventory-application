@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {DateTime} = require('luxon');
 
 const gameSchema = new mongoose.Schema({
     title: {
@@ -24,6 +25,13 @@ const gameSchema = new mongoose.Schema({
 
 gameSchema.virtual("url").get(function() {
     return `/games/game/${this._id}`;
+})
+
+gameSchema.virtual("date_formatted").get(function() {
+    let year = DateTime.fromJSDate(this.release).year;
+    let month = DateTime.fromJSDate(this.release).month;
+    let day = DateTime.fromJSDate(this.release).day;
+    return `${year}-${month}-${day}`;
 })
 
 module.exports = mongoose.model("Game", gameSchema);
