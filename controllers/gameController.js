@@ -172,6 +172,15 @@ exports.game_update_get = (req, res) => {
                 .exec(callback);
             }
         }, (err, result) => {
+
+            for(let x = 0; x < result.genres.length; x++) {
+                for (let y = 0; y < result.game.genre.length; y++) {
+                    if (result.game.genre[y]._id.toString() == result.genres[x]._id.toString()) {
+                        result.genres[x].checked = true;
+                    }
+                }
+            }
+
             res.render(`./game/game_form`, {
                 developers: result.developers, 
                 genres: result.genres,
