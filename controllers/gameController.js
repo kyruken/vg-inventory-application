@@ -4,6 +4,7 @@ const {body, validationResult } = require('express-validator');
 const Game = require('../models/game');
 const Developer = require('../models/developer');
 const Genre = require('../models/genre');
+const { findByIdAndUpdate } = require('../models/game');
 exports.index = (req, res) => {
 
     async.parallel({
@@ -182,6 +183,12 @@ exports.game_update_get = (req, res) => {
     
 }
 
-exports.game_update_post = (req, res) => {
-
+exports.game_update_post = (req, res, next) => {
+    /* Maybe add field validations later on? */
+    Game.findByIdAndUpdate(req.params.id, req.body, (err, updatedGame) => {
+        if(err) {
+            return next(err);
+        }
+        res.redirect(updatedGame.url);
+    })
 }
