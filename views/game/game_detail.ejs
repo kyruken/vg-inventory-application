@@ -1,7 +1,15 @@
 
 <h3> <%= game.title %> </h3>
 <p> <%= game.developer.name %></p>
-<p><%= game.genre[0].name %></p>
+<% for (const x in game.genre) { %>
+    <span>
+        <%=game.genre[x].name%>
+        <% if (x < game.genre.length-1) { %>
+            ,
+            <% } %> 
+    </span>
+
+<% } %>
 <p><%= game.esrb %></p>
 <p><%= game.release %></p>
 <p><%= game.price %></p>
