@@ -54,8 +54,14 @@
         </select>
     </label>
     <label>
-        <!-- Used two for loops, I don't really like doing it this way -->
-        <!-- Is there a more optimal way to solve this? -->
+        <% for (const x in genres) { %>
+            <%= genres[x].name %>
+            <input type="checkbox" value="<% genres[x]._id %>" name="genre"
+            <% if (genres[x].checked) { %>
+                checked 
+            <% } %>
+            >
+        <% } %>
     </label>
     <label>
         <!-- use locals.game to check if something is undefined, if you use game it gives EJS an error -->
