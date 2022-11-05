@@ -1,8 +1,14 @@
 //Model
-const genreSchema = require('../models/genre');
+const Genre = require('../models/genre');
 
 exports.index = (req, res) => {
-    res.render('./genre/genre_list');
+    Genre.where("name")
+    .exec((err, result) => {
+        if (err) {
+            return next(err);
+        }
+        res.render('./genre/genre_list', {genre: result});
+    })
 }
 
 exports.genre_detail_get = (req, res) => {
