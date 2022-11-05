@@ -42,6 +42,7 @@ exports.developer_form_get = (req, res) => {
 }
 
 exports.developer_form_post = (req, res) => {
+    /* Add validations later */
     const newDev = new Developer({
         name: req.body.name
     })
@@ -121,6 +122,7 @@ exports.developer_update_get = (req, res, next) => {
 }
 
 exports.developer_update_post = (req, res) => {
+        /* Add validations later */
     const newDev = new Developer({
         name: req.body.name,
         _id: req.params.id
