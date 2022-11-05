@@ -34,3 +34,18 @@ exports.developer_detail_get = (req, res) => {
              });
         })
 }
+
+exports.developer_update_get = (req, res, next) => {
+    Developer.findById(req.params.id, {}, (err, result) => {
+        if (err) {
+            next(err);
+        }
+        
+        res.render('./developer/developer_form', {developer: result});
+    })
+
+}
+
+exports.developer_update_post = (req, res) => {
+    
+}
