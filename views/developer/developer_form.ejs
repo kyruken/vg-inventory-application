@@ -1,8 +1,8 @@
-
-<%= developer %>
+<h3><%= message %></h3>
+<%= locals.developer %>
 <form method="POST" action=''>
     <label for="name">
-        <input type="text" name="name" placeholder="Name" value="<%= locals.developer.name %>">
+        <input type="text" name="name" placeholder="Name" value="<%= undefined===locals.developer ? '' : developer.name %>">
     </label>
     <button type="submit">Submit</button>
 </form>
