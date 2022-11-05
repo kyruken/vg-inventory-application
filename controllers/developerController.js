@@ -68,7 +68,42 @@ exports.developer_delete_get = (req, res) => {
 
 exports.developer_delete_post = (req, res) => {
     
+    async.parallel(
+        {
+            games(callback) {
+                Game.where("developer")
+                .equals(req.params.id)
+                .exec(callback);
+            },
+            developer(callback) {
+                Developer.findById(req.params.id)
+                .exec(callback);
+            }
 
+        }, (err, result) => {
+            if (err) {
+                return next(err);
+            }
+
+            //if any games have this developer, redirect to developer details with message
+            if (result.games.length > 0) {
+                res.render('./developer/developer_detail', {
+                    developer: result.developer,
+                    games: result.games,
+                    message: "Cannot delete this developer. This developer currently has games on the database."
+                })
+                return;
+            }
+
+            Developer.findByIdAndDelete(req.params.id, (err) => {
+                if (err) {
+                    return next(err);
+                }
+
+                res.redirect('/games/developers');
+            })
+        }
+    )
 }
 
 exports.developer_update_get = (req, res, next) => {
