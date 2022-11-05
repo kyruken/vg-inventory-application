@@ -1,6 +1,7 @@
+<h3> <%= undefined===locals.developer ? '' : locals.message %></h3>
 <h3> <%= developer.name %> </h3>
 <h4> Games list</h4>
-<% for (const game in games) { %>
+<% for (const game in locals.games) { %>
     <p><%= games[game].title %></p>
     <p><%= games[game].esrb %></p>
     <p>Release: <%= games[game].date %></p>
