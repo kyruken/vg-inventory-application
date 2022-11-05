@@ -24,6 +24,12 @@ router.post('/game_update/:id', gameController.game_update_post);
 router.get('/developers', developerController.index);
 router.get('/developer/:id', developerController.developer_detail_get);
 
+router.get('/developer_form/create', developerController.developer_form_get);
+router.post('/developer_form/create', developerController.developer_form_post);
+
+router.get('/developer_delete/:id', developerController.developer_delete_get);
+router.post('/developer_delete/:id', developerController.developer_delete_post);
+
 router.get('/developer_update/:id', developerController.developer_update_get);
 router.post('/developer_update/:id', developerController.developer_update_post);
 
