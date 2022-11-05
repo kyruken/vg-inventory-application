@@ -112,7 +112,10 @@ exports.developer_update_get = (req, res, next) => {
             next(err);
         }
         
-        res.render('./developer/developer_form', {developer: result});
+        res.render('./developer/developer_form', {
+            developer: result,
+            message: "Update developer"
+        });
     })
 
 }
