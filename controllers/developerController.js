@@ -47,5 +47,19 @@ exports.developer_update_get = (req, res, next) => {
 }
 
 exports.developer_update_post = (req, res) => {
+    const newDev = new Developer({
+        name: req.body.name,
+        _id: req.params.id
+    })
+
+    Developer.findByIdAndUpdate(req.params.id, newDev, (err, updatedDev) => {
+        if (err) {
+            return next(err);
+        }
+
+        res.redirect(updatedDev.url)
+
+    })
+
     
 }
