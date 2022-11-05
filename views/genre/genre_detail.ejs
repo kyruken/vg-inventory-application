@@ -1,0 +1,13 @@
+<h3> <%= undefined===locals.genre ? '' : locals.message %></h3>
+<h3> <%= genre.name %> </h3>
+<h4>Games list</h4>
+<% for (const game in locals.games) { %>
+    <p><%= games[game].title %></p>
+    <p><%= games[game].esrb %></p>
+    <p>Release: <%= games[game].date %></p>
+    <p><%= games[game].price %></p>
+
+<% } %>
+
+<a href="/games/genre_update/<%= genre._id %>">Update genre</a>
+<a href="/games/genre_delete/<%= genre._id %>">Delete genre</a>
