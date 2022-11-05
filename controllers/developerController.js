@@ -42,7 +42,18 @@ exports.developer_form_get = (req, res) => {
 }
 
 exports.developer_form_post = (req, res) => {
-    
+    const newDev = new Developer({
+        name: req.body.name
+    })
+
+    newDev.save((err) => {
+        if (err) {
+            return next(err);
+        }
+
+        res.redirect(newDev.url);
+    });
+
 }
 
 exports.developer_delete_get = (req, res) => {
