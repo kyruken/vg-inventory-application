@@ -36,7 +36,7 @@ exports.developer_detail_get = (req, res) => {
 }
 
 exports.developer_update_get = (req, res, next) => {
-    Developer.findById(req.params.id, {}, (err, result) => {
+    Developer.findById(req.params.id, (err, result) => {
         if (err) {
             next(err);
         }
