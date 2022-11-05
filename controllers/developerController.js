@@ -35,6 +35,26 @@ exports.developer_detail_get = (req, res) => {
         })
 }
 
+exports.developer_form_get = (req, res) => {
+
+    res.render('./developer/developer_form', {message: "Add a developer"});
+
+}
+
+exports.developer_form_post = (req, res) => {
+    
+}
+
+exports.developer_delete_get = (req, res) => {
+    
+
+}
+
+exports.developer_delete_post = (req, res) => {
+    
+
+}
+
 exports.developer_update_get = (req, res, next) => {
     Developer.findById(req.params.id, (err, result) => {
         if (err) {
