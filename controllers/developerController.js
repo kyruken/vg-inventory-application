@@ -57,8 +57,13 @@ exports.developer_form_post = (req, res) => {
 }
 
 exports.developer_delete_get = (req, res) => {
-    
+    Developer.findById(req.params.id, (err, result) => {
+        if (err) {
+            return next(err);
+        }
 
+        res.render('./developer/developer_delete', {developer: result});
+    })
 }
 
 exports.developer_delete_post = (req, res) => {
