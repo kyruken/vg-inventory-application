@@ -1,0 +1,11 @@
+<h3> <%= developer.name %> </h3>
+<h4> Games list</h4>
+<% for (const game in games) { %>
+    <p><%= games[game].title %></p>
+    <p><%= games[game].esrb %></p>
+    <p>Release: <%= games[game].date %></p>
+    <p><%= games[game].price %></p>
+
+<% } %>
+<a href="/games/game_update/<%= developer._id %>">Update developer</a>
+<a href="/games/game_delete/<%= developer._id %>">Delete developer</a>
