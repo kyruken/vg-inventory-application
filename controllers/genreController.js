@@ -1,5 +1,7 @@
+const async = require('async');
 //Model
 const Genre = require('../models/genre');
+const Game = require('../models/game');
 
 exports.index = (req, res) => {
     Genre.where("name")
@@ -12,7 +14,27 @@ exports.index = (req, res) => {
 }
 
 exports.genre_detail_get = (req, res) => {
+    async.parallel(
+        {
+            //this Game.where does something amazing where it iterates through the genre array by itself and compares
+            //if any of the id's in the array match the req.params.id, and returns that game if theres a match.
+            //Good stuff mongoose devs! Amazing functionality that helps me a TON
+            games(callback) {
+                Game.where("genre")
+                .equals(req.params.id)
+                .exec(callback);
+            },
 
+            genre(callback) {
+                Genre.findById(req.params.id).exec(callback);
+            }
+        }, (err, result) => {
+            res.render('./genre/genre_detail', {
+                genre: result.genre,
+                games: result.games
+            })
+        }
+    )
 }
 
 exports.genre_form_get = (req, res) => {
