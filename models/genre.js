@@ -9,7 +9,7 @@ const genreSchema = new mongoose.Schema({
 })
 
 genreSchema.virtual("url").get(function() {
-    return `genre/${this._id}`;
+    return `/games/genre/${this._id}`;
 })
 
 module.exports = mongoose.model("Genre", genreSchema);
