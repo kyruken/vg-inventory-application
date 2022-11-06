@@ -71,7 +71,7 @@
         <input type="number" name="price" placeholder="price" value="<%= undefined===locals.game ? '' : game.price %>">
     </label>
     <label>
-        <input type="file" name="picture">
+        <input type="text" name="picture" placeholder="img url" value="<%= undefined===locals.game ? '' : game.picture %>">
     </label>
     <button type="submit">Submit</button>
 </form>
