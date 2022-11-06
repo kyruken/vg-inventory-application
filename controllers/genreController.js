@@ -9,7 +9,7 @@ exports.index = (req, res) => {
         if (err) {
             return next(err);
         }
-        res.render('./genre/genre_list', {genre: result});
+            res.render('./genre/genre_list', { genre: result });
     })
 }
 
@@ -38,7 +38,7 @@ exports.genre_detail_get = (req, res) => {
 }
 
 exports.genre_form_get = (req, res) => {
-    res.render('./genre/genre_form', {message: "Create genre"})
+    res.render('./genre/genre_form', { message: "Create genre" })
 }
 
 exports.genre_form_post = (req, res) => {
@@ -59,10 +59,52 @@ exports.genre_form_post = (req, res) => {
 }
 
 exports.genre_delete_get = (req, res) => {
+    Genre.findById(req.params.id, (err, result) => {
+        if (err) {
+            return next(err);
+        }
+        res.render('./genre/genre_delete', { genre: result })
 
+    })
 }
 
 exports.genre_delete_post = (req, res) => {
+    async.parallel(
+        {
+            games(callback) {
+                Game.where("genre")
+                    .equals(req.params.id)
+                    .exec(callback);
+            },
+
+            genre(callback) {
+                Genre.findById(req.params.id).exec(callback);
+            }
+
+        }, (err, result) => {
+            if (err) {
+                return next(err);
+            }
+            console.log(result.games);
+
+            if (result.games.length > 0) {
+                res.render('./genre/genre_detail', {
+                    genre: result.genre,
+                    message: "Cannot delete this genre. This genre currently has games on the database."
+                })
+
+                return;
+            }
+
+            Genre.findByIdAndDelete(req.params.id, (err) => {
+                if (err) {
+                    return next(err);
+                }
+        
+                res.redirect('/games/genres');
+            })
+        })
+
 
 }
 
