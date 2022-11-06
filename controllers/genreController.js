@@ -109,9 +109,31 @@ exports.genre_delete_post = (req, res) => {
 }
 
 exports.genre_update_get = (req, res, next) => {
+    Genre.findById(req.params.id, (err, result) => {
+        if (err) {
+            return next(err);
+        }
+
+        res.render('./genre/genre_form', {
+            genre: result,
+            message: "Update genre"
+        })
+    })
 
 }
 
 exports.genre_update_post = (req, res) => {
-    
+    const newGenre = new Genre({
+        name: req.body.name,
+        description: req.body.description,
+        _id: req.params.id
+    })
+
+    Genre.findByIdAndUpdate(req.params.id, newGenre, (err, updatedGenre) => {
+        if (err) {
+            return next(err);
+        }
+
+        res.redirect(updatedGenre.url);
+    })
 }
