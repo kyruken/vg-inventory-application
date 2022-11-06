@@ -202,13 +202,17 @@ exports.game_update_get = (req, res) => {
 
 exports.game_update_post = (req, res, next) => {
     /* Maybe add field validations later on? */
+
+    const receivedPath = req.file.path;
+    const cleanedPath = receivedPath.slice(6);
+
     const newGame = new Game({
         title: req.body.title,
         developer: req.body.developer,
         esrb: req.body.esrb,
         genre: typeof req.body.genre === "undefined" ? [] : req.body.genre,
         release: req.body.release,
-        picture: req.body.picture,
+        picture: cleanedPath,
         _id: req.params.id
     });
 
