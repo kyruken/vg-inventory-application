@@ -21,6 +21,7 @@ const gameSchema = new mongoose.Schema({
         required: true
     },
     price: Number,
+    picture: String
 })
 
 gameSchema.virtual("url").get(function() {
