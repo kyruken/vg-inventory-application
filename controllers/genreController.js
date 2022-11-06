@@ -38,9 +38,23 @@ exports.genre_detail_get = (req, res) => {
 }
 
 exports.genre_form_get = (req, res) => {
+    res.render('./genre/genre_form', {message: "Create genre"})
 }
 
 exports.genre_form_post = (req, res) => {
+    /* Add validation sanitizer */
+    const newGenre = new Genre({
+        name: req.body.name,
+        description: req.body.description
+    })
+
+    newGenre.save((err) => {
+        if (err) {
+            return next(err);
+        }
+    })
+    
+    res.redirect(newGenre.url);
 
 }
 
