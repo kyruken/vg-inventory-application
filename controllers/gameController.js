@@ -116,6 +116,13 @@ exports.game_form_post = [
             return;
         }
 
+        //We use receivedPath to get the file path
+        //cleanedPath slices the 'public' part of the filename
+        //ex: public/images/img_1012.img => receivedPath
+        //ex images/img_1012.img => cleanedPath
+        const receivedPath = req.file.path;
+        const cleanedPath = receivedPath.slice(6);
+
         const newGame = new Game({
             title: req.body.title,
             developer: req.body.developer,
@@ -123,7 +130,7 @@ exports.game_form_post = [
             genre: req.body.genre,
             release: req.body.release,
             price: req.body.price,
-            picture: req.body.picture
+            picture: cleanedPath
         })
 
         newGame.save((err) => {
