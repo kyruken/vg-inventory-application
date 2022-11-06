@@ -2,6 +2,7 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
+const path = require('path');
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
@@ -22,7 +23,7 @@ app.set('views', __dirname + '/views');
 app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
 app.use(express.urlencoded({extended: true}));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 
 //route handlers ? *
