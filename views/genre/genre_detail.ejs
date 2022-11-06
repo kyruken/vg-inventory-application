@@ -1,5 +1,6 @@
 <h3> <%= undefined===locals.genre ? '' : locals.message %></h3>
 <h3> <%= genre.name %> </h3>
+<p> <%= genre.description %></p>
 <h4>Games list</h4>
 <% for (const game in locals.games) { %>
     <p><%= games[game].title %></p>
