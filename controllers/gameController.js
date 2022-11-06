@@ -122,7 +122,8 @@ exports.game_form_post = [
             esrb: req.body.esrb,
             genre: req.body.genre,
             release: req.body.release,
-            price: req.body.price
+            price: req.body.price,
+            picture: req.body.picture
         })
 
         newGame.save((err) => {
@@ -200,6 +201,7 @@ exports.game_update_post = (req, res, next) => {
         esrb: req.body.esrb,
         genre: typeof req.body.genre === "undefined" ? [] : req.body.genre,
         release: req.body.release,
+        picture: req.body.picture,
         _id: req.params.id
     });
 
