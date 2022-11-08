@@ -59,10 +59,10 @@ button {
     font-size: 1em;
     font-weight: 600;
     cursor: pointer;
-    transition: all 400ms ease-in-out 0s;
 }
 
 button:hover {
+    transition: background-color 400ms ease-in-out 0s;
     background-color: #525654;
 
 }
@@ -98,11 +98,11 @@ header {
 
 .navbar a {
     font-size: 1.5rem;
-    transition: color 400ms ease 0s;
     
 }
 
 .navbar a:hover {
+    transition: color 400ms ease 0s;
     color: hsl(0, 15%, 75%);
     border-bottom: 2px solid hsl(0, 15%, 75%);
 }
