@@ -1,9 +1,8 @@
 <h2>Games list</h2>
+<a href="/games/game_form/create">Add new game</a>
 <% for (let x = 0; x < games.length; x++) { %>
     <img src='<%=games[x].picture%>' alt='<%= games[x].name %>' width="150"/>
     <h3><a href='<%= games[x].url %>'><%= games[x].title %> </a></h3>
     <p>price:<%= games[x].price %></p>
 
 <% } %>
-
-<a href="/games/game_form/create">Add new game</a>
