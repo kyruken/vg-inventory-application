@@ -1,5 +1,7 @@
-<h2>Genre List</h2>
-<a href="/games/genre_form/create">Add new genre</a>
+<div class="title-container">
+    <h2>Genre List</h2>
+    <a href="/games/genre_form/create"><button>+ Add new genre</button></a>
+</div>
 
 <% for (let x = 0; x < genre.length; x++) { %>
     <h3><a href='<%= genre[x].url %>'><%= genre[x].name %> </a></h3>
