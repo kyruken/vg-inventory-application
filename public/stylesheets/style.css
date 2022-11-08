@@ -5,16 +5,32 @@ ul, li {
     list-style-type: none;
 }
 
+p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    background-color: none;
+    color: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
 :root {
     font-family: Open Sans, sans-serif, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     box-sizing: border-box;
 
-    --text-color: hsl(0, 0%, 0%);
-    --text-color-grey: hsl(0, 0%, 73%);
-    --bg-color: hsl(0, 0%, 90%);
-    --primary: 
-    --primary-active: 
-    --primary-hover: 
+    --text-color-primary: #fff;
+    --text-color-secondary: hsl(0, 15%, 75%);
+    --primary-bg-color: hsl(0, 3%, 21%);
+    --secondary-bg-color: hsl(0, 2%, 16%);
+    --primary: 	#E6E6E6;
+    /* --primary-active: 
+    --primary-hover:  */
+    --secondary: #484b4a;
+    letter-spacing: 0.8px;
 }
 
 body {
@@ -23,23 +39,44 @@ body {
     border: 0px solid transparent;
     font-family: Roboto, sans-serif;
     line-height: 1.5;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--primary-bg-color);
+    color: var(--text-color-primary);
 }
 
 h1, h2 {
     text-align: center;
 }
-a:link {
-    text-decoration: none;
-    color: black;
+
+button {
+    background-color: var(--secondary);
+    border-radius: 10px;
+    color: var(--primary);
+    border: 1.5px solid #000;
+    min-width: 10%;
+    height: 10%;
+    padding: 1rem 1rem;
+    font-family: Open Sans, sans-serif, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 400ms ease-in-out 0s;
 }
-a:hover {
-    text-decoration: underline;
+
+button:hover {
+    background-color: #525654;
+
+}
+
+
+a {
+    text-decoration: none;
+    color: var(--text-color-primary);
 }
 
 /* header styles */
 header {
+    background-color: var(--secondary-bg-color);
+    border-bottom: 1.5px solid black;
     position: relative;
     display: flex;
     align-items: center;
@@ -61,13 +98,84 @@ header {
 
 .navbar a {
     font-size: 1.5rem;
+    transition: color 400ms ease 0s;
+    
 }
 
+.navbar a:hover {
+    color: hsl(0, 15%, 75%);
+    border-bottom: 2px solid hsl(0, 15%, 75%);
+}
+
+.title-container {
+    padding: 2rem 0;
+}
 
 /* body content styles */
 .content {
-    border: 1px solid black;
     max-width: 1280px;
     margin: 0 auto;
+}
+
+
+/* game styles */
+.games-container {
+    background-color: var(--secondary-bg-color);
+    border: 1.5px solid black;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 22%));
+    justify-items: center;
+    justify-content: center;
+    row-gap: 2rem;
+    padding: 3rem 0;
+}
+
+.game {
+    background-color: hsl(0, 3%, 20%);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-weight: 600;
+}
+
+.game p {
+    font-size: 1.5rem;
+}
+
+.game:hover {
+    background-color: var(--secondary);
+    transition: transform 500ms ease;
+    transform: scale(1.1);
+    
+}
+
+.game:not(:hover) {
+    transition: transform 500ms ease;
+    transform: scale(1.0);
+
+}
+
+
+.game img {
+    width: 75%;
+    align-self: center;
+    filter: brightness(0.9);
+
+}
+
+.game h3 {
+    /* code for handling text overflow */
+    text-overflow: ellipsis; 
+    overflow: hidden;
+    white-space: nowrap; 
+    font-weight: 500;
+    font-size: 1rem;
+    /* white-space: nowrap;  */
 }
 
