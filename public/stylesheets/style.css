@@ -1,0 +1,73 @@
+/* resets */
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+:root {
+    font-family: Open Sans, sans-serif, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box;
+
+    --text-color: hsl(0, 0%, 0%);
+    --text-color-grey: hsl(0, 0%, 73%);
+    --bg-color: hsl(0, 0%, 90%);
+    --primary: 
+    --primary-active: 
+    --primary-hover: 
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    border: 0px solid transparent;
+    font-family: Roboto, sans-serif;
+    line-height: 1.5;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+h1, h2 {
+    text-align: center;
+}
+a:link {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* header styles */
+header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.logo {
+    position: absolute;
+    left: 2rem;
+}
+
+/* navbar styles */
+.navbar {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.navbar a {
+    font-size: 1.5rem;
+}
+
+
+/* body content styles */
+.content {
+    border: 1px solid black;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
