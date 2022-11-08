@@ -8,12 +8,21 @@
     <title>Document</title>
 </head>
 <body>
-    <navbar>
-        <a href="/">Games</a>
-        <a href="/games/genres">Genres</a>
-        <a href="/games/developers">Developers</a>
-    </navbar>
-    <h1>Video Game Inventory Application</h1>
-    <div class="content-container"><%- body %></div>
+    <header>
+        <div class="logo">
+            Heemgames
+
+        </div>
+        <nav>
+            <ul class="navbar">
+                <li><a href="/">Games</a></li>
+                <li><a href="/games/genres">Genres</a></li>
+                <li><a href="/games/developers">Developers</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content">
+        <%- body %>
+    </div>
 </body>
 </html>
