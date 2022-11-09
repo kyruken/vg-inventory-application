@@ -8,6 +8,13 @@
         <% } %>
     </label>
     <label>
+        <input type="text" name="description" placeholder="description"
+        <% if (locals.game) { %>
+            value="<%= game.description %>" >
+
+        <% } %>
+    </label>
+    <label>
         <select name="developer" id="developer">
             <% for (let x = 0; x < developers.length; x++) { %>
                 <!-- We check if our game developer's name object matches the result developer's name object-->

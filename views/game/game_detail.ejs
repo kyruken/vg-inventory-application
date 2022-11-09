@@ -3,7 +3,7 @@
     <div class="detail-img"><img src="<%=game.picture %>" alt="<%= game.title %>"/></div>
     <div class="detail-container">
         <h3> <%= game.title %> </h3>
-        
+
         <div>
             <p> <%= game.developer.name %></p>
             <% for (const x in game.genre) { %>
@@ -15,8 +15,9 @@
                 </span>
             
             <% } %>
-            <p><%= game.esrb %></p>
             <p>Release: <%= game.date %></p>
+            <p><%= game.description %></p>
+            <p><%= game.esrb %></p>
             <p><%= game.price %></p>
             
         </div>

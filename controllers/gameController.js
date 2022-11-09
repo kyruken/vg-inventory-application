@@ -122,6 +122,7 @@ exports.game_form_post = [
 
         const newGame = new Game({
             title: req.body.title,
+            description: req.body.description,
             developer: req.body.developer,
             esrb: req.body.esrb,
             genre: req.body.genre,
@@ -202,6 +203,7 @@ exports.game_update_post = (req, res, next) => {
 
     const newGame = new Game({
         title: req.body.title,
+        description: req.body.description,
         developer: req.body.developer,
         esrb: req.body.esrb,
         genre: typeof req.body.genre === "undefined" ? [] : req.body.genre,
