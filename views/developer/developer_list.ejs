@@ -3,7 +3,9 @@
     <a href="/games/developer_form/create"><button>+ Add new developer</button></a>
 </div>
 
-<% for (let x = 0; x < developers.length; x++) { %>
-    <h3><a href='<%= developers[x].url %>'><%= developers[x].name %> </a></h3>
-
-<% } %>
+<div class="content-container">
+    <% for (let x = 0; x < developers.length; x++) { %>
+        <h3><a href='<%= developers[x].url %>'><button class="red-button button-in-flex"><%= developers[x].name %> </button></a></h3>
+    
+    <% } %>
+</div>

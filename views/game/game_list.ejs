@@ -2,7 +2,7 @@
     <h2>Games list</h2>
     <a href="/games/game_form/create"><button>+ Add new game</button></a>
 </div>
-<div class="games-container">
+<div class="content-container">
     <% for (let x = 0; x < games.length; x++) { %>
         <a href='<%= games[x].url %>' class="game">
             <img src='<%=games[x].picture%>' alt='<%= games[x].name %>'/>
