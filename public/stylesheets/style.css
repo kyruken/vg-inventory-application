@@ -18,10 +18,13 @@ button {
     border: 0;
 }
 
-.flex-button {
-    display: flex;
+.genre-button {
+    background-color: red;
 }
 
+.genre-button:hover {
+    background-color: red;
+}
 :root {
     font-family: Open Sans, sans-serif, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     box-sizing: border-box;
@@ -223,6 +226,31 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
+.detail-container div {
+    width: 700px;
+    max-height: 300px;
+    
+}
+
+.detail-container button {
+    display: inline-flex;
+    align-items: center;
+}
+
+.space-around {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;  
+}
+
+.text-size-1 {
+    font-size: 2rem;  
+}
+
+.text-secondary-color {
+    color: var(--text-color-secondary);
+}
