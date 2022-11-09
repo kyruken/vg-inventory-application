@@ -1,84 +1,86 @@
-<h2><%= name %></h2>
-<form method="POST" action='' enctype="multipart/form-data">
-    <label>
-        <input type="text" name="title" placeholder="title"
-        <% if (locals.game) { %>
-            value="<%= game.title %>" >
-
-        <% } %>
-    </label>
-    <label>
-        <input type="text" name="description" placeholder="description"
-        <% if (locals.game) { %>
-            value="<%= game.description %>" >
-
-        <% } %>
-    </label>
-    <label>
-        <select name="developer" id="developer">
-            <% for (let x = 0; x < developers.length; x++) { %>
-                <!-- We check if our game developer's name object matches the result developer's name object-->
-                <!-- if they match, we add selected to the option -->
-                <!-- we use locals.game which is always true, and use && to check other statement which can be falsy-->
-                <!-- Had a hard time figuring out how to have the update_get work with create_get-->
-                <option value="<%= developers[x]._id %>" 
-                    <% if (locals.game && game.developer.name === developers[x].name) {%>
-                        selected
-                        <% } %>
-                        >
-                    <%= developers[x].name %>
-                </option>
-
-
+<div class="content-container">
+    <h2><%= name %></h2>
+    <form method="POST" action='' enctype="multipart/form-data">
+        <label>
+            <input type="text" name="title" placeholder="title"
+            <% if (locals.game) { %>
+                value="<%= game.title %>" >
+    
             <% } %>
-        </select>
-    </label>
-    <label>
-        ESRB:
-        <select name="esrb" id="esrb">
-            <option
-            <% if (locals.game && game.esrb === "E")  { %> 
-                selected
+        </label>
+        <label>
+            <input type="text" name="description" placeholder="description"
+            <% if (locals.game) { %>
+                value="<%= game.description %>" >
+    
             <% } %>
-            >E
-        </option>
-            <option
-            <% if (locals.game && game.esrb === "E10")  { %> 
-                selected
-            <% } %>
-            >E10
-        </option>
-            <option <% if (locals.game && game.esrb === "T")  { %> 
-                selected
-            <% } %>
-            >T
-        </option>
-            <option <% if (locals.game && game.esrb === "T")  { %> 
-                selected
-            <% } %>
-            >M
+        </label>
+        <label>
+            <select name="developer" id="developer">
+                <% for (let x = 0; x < developers.length; x++) { %>
+                    <!-- We check if our game developer's name object matches the result developer's name object-->
+                    <!-- if they match, we add selected to the option -->
+                    <!-- we use locals.game which is always true, and use && to check other statement which can be falsy-->
+                    <!-- Had a hard time figuring out how to have the update_get work with create_get-->
+                    <option value="<%= developers[x]._id %>"
+                        <% if (locals.game && game.developer.name === developers[x].name) {%>
+                            selected
+                            <% } %>
+                            >
+                        <%= developers[x].name %>
+                    </option>
+    
+    
+                <% } %>
+            </select>
+        </label>
+        <label>
+            ESRB:
+            <select name="esrb" id="esrb">
+                <option
+                <% if (locals.game && game.esrb === "E")  { %>
+                    selected
+                <% } %>
+                >E
             </option>
-        </select>
-    </label>
-    <label>
-        <% for (const x in genres) { %>
-            <%= genres[x].name %>
-            <input type="checkbox" value="<%= genres[x]._id %>" name="genre"
-            <% if (genres[x].checked) { %>
-                checked 
+                <option
+                <% if (locals.game && game.esrb === "E10")  { %>
+                    selected
+                <% } %>
+                >E10
+            </option>
+                <option <% if (locals.game && game.esrb === "T")  { %>
+                    selected
+                <% } %>
+                >T
+            </option>
+                <option <% if (locals.game && game.esrb === "T")  { %>
+                    selected
+                <% } %>
+                >M
+                </option>
+            </select>
+        </label>
+        <label>
+            <% for (const x in genres) { %>
+                <%= genres[x].name %>
+                <input type="checkbox" value="<%= genres[x]._id %>" name="genre"
+                <% if (genres[x].checked) { %>
+                    checked
+                <% } %>
+                >
             <% } %>
-            >
-        <% } %>
-    </label>
-    <label>
-        <!-- use locals.game to check if something is undefined, if you use game it gives EJS an error -->
-        <input type="date" name="release" placeholder="release" value="<%= undefined===locals.game ? '' : game.date_formatted %>">
-    </label>
-    <label>
-        <input type="number" name="price" placeholder="price" value="<%= undefined===locals.game ? '' : game.price %>">
-    </label>
-    <label>
-        <input type="text" name="picture" placeholder="img url" value="<%= undefined===locals.game ? '' : game.picture %>">
-    </label>
-    <button type="submit">Submit</button>
-</form>
+        </label>
+        <label>
+            <!-- use locals.game to check if something is undefined, if you use game it gives EJS an error -->
+            <input type="date" name="release" placeholder="release" value="<%= undefined===locals.game ? '' : game.date_formatted %>">
+        </label>
+        <label>
+            <input type="number" name="price" placeholder="price" value="<%= undefined===locals.game ? '' : game.price %>">
+        </label>
+        <label>
+            <input type="text" name="picture" placeholder="img url" value="<%= undefined===locals.game ? '' : game.picture %>">
+        </label>
+        <button type="submit">Submit</button>
+    </form>
+</div>
