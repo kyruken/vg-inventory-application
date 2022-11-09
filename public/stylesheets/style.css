@@ -8,6 +8,7 @@ ul, li {
 p, h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
+    font-size: 100%;
 }
 
 button {
@@ -42,7 +43,6 @@ button {
 }
 
 body {
-    padding: 0;
     margin: 0;
     border: 0px solid transparent;
     font-family: Roboto, sans-serif;
@@ -120,13 +120,14 @@ header {
 }
 
 .title-container {
-    padding: 2rem 0;
+    padding: 0.8rem 0;
 }
 
 /* body content styles */
 .content {
     max-width: 1280px;
     margin: 0 auto;
+    padding: 2.5rem 0rem;
 }
 
 
@@ -136,11 +137,11 @@ header {
     border: 1.5px solid black;
     border-radius: 10px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 22%));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-items: center;
     justify-content: center;
     row-gap: 2rem;
-    padding: 3rem 0;
+    padding: 3rem 2rem;
 }
 
 .game {
@@ -195,8 +196,11 @@ header {
 
 .game-detail {
     display: grid;
-    grid-template-columns: 400px 1fr;
-    padding: 3rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding-top: 3rem;
+    padding-bottom: 10rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .game-detail h3 {
@@ -208,12 +212,11 @@ header {
     border: 1px solid black;
     border-radius: 8px;
     text-align: center;
-    padding: 2.5rem 2rem;
-    
+
 }
 
 .detail-img img {
-    width: 80%;
+    width: 50%;
 }
 .detail-container {
     border-top: 1px solid black;
@@ -221,19 +224,14 @@ header {
     border-bottom: 1px solid black;
     border-radius: 8px;
     background-color: var(--secondary-bg-color);
-    min-width: 600px;
 
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     gap: 1rem;
 }
 
-.detail-container div {
-    width: 700px;
-    max-height: 300px;
-    
-}
 
 .button-in-flex {
     display: inline-flex;
@@ -241,9 +239,14 @@ header {
 }
 
 .padding-1 {
-    padding: 1rem 1rem;
+    padding: 1rem;
 }
 
+.padding-2 {
+    padding: 2rem;
+}
+
+/*
 .padding-tb1 {
     padding: 1rem 0;
 }
@@ -255,7 +258,7 @@ header {
 .widthheight-1 {
     width: 400px;
     height: 200px;
-}
+} */
 
 .space-around {
     display: flex;
@@ -270,4 +273,36 @@ header {
 
 .text-secondary-color {
     color: var(--text-color-secondary);
+}
+
+
+@media screen and (max-width: 600px) {
+    .logo {
+        display: none;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.5rem;
+    }
+    h4, h5, h6 {
+        font-size: 1.2rem;
+    }
+
+    .navbar a {
+        font-size: 1.2rem;
+    }
+
+    .detail-container {
+        border-left: 1.5px solid black;
+    }
+    .detail-container h3 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.8rem;
+    }
+    button {
+        font-size: 0.6rem;
+    }
 }
