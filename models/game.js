@@ -6,6 +6,10 @@ const gameSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String,
+        required: true
+    },
     developer: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
