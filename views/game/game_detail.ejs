@@ -8,7 +8,7 @@
                 <p class="text-size-1">$<%= game.price %></p>
                 <p class="text-secondary-color">Release: <%= game.date %></p>
             </div>
-            <p> <%= game.developer.name %></p>
+            <p class="padding-tb1"> <%= game.developer.name %></p>
             <% for (const x in game.genre) { %>
                 <span>
                     <button class="genre-button"><%=game.genre[x].name%></button>
@@ -18,12 +18,14 @@
                 </span>
             
             <% } %>
-            <p><%= game.description %></p>
-            <p>ESRB Rating: <%= game.esrb %></p>
+            <div class="widthheight-1 padding-1">
+                <p><%= game.description %></p>
+                <p>ESRB Rating: <%= game.esrb %></p>
+            </div>
             
         </div>
 
-        <span>
+        <span class="padding-tb1">
             <a href="/games/game_update/<%= game._id %>"><button>Update game</button></a>
             <a href="/games/game_delete/<%= game._id %>"><button>Delete game</button></a>
         </span>

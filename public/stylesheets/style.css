@@ -240,6 +240,23 @@ header {
     align-items: center;
 }
 
+.padding-1 {
+    padding: 1rem 1rem;
+}
+
+.padding-tb1 {
+    padding: 1rem 0;
+}
+
+.padding-tb2 {
+    padding: 1.5rem 0;
+}
+
+.widthheight-1 {
+    width: 400px;
+    height: 200px;
+}
+
 .space-around {
     display: flex;
     justify-content: center;
