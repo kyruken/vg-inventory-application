@@ -18,11 +18,11 @@ button {
     border: 0;
 }
 
-.genre-button {
+.red-button {
     background-color: red;
 }
 
-.genre-button:hover {
+.red-button:hover {
     background-color: red;
 }
 :root {
@@ -131,7 +131,7 @@ header {
 
 
 /* game styles */
-.games-container {
+.content-container {
     background-color: var(--secondary-bg-color);
     border: 1.5px solid black;
     border-radius: 10px;
@@ -235,7 +235,7 @@ header {
     
 }
 
-.detail-container button {
+.button-in-flex {
     display: inline-flex;
     align-items: center;
 }
