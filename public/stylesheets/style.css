@@ -18,6 +18,10 @@ button {
     border: 0;
 }
 
+.flex-button {
+    display: flex;
+}
+
 :root {
     font-family: Open Sans, sans-serif, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     box-sizing: border-box;
@@ -26,6 +30,7 @@ button {
     --text-color-secondary: hsl(0, 15%, 75%);
     --primary-bg-color: hsl(0, 3%, 21%);
     --secondary-bg-color: hsl(0, 2%, 16%);
+    --third-bg-color: hsl(0, 2%, 12%);
     --primary: 	#E6E6E6;
     /* --primary-active: 
     --primary-hover:  */
@@ -45,6 +50,10 @@ body {
 
 h1, h2 {
     text-align: center;
+}
+
+p {
+    font-size: 1.2rem;
 }
 
 button {
@@ -177,5 +186,43 @@ header {
     font-weight: 500;
     font-size: 1rem;
     /* white-space: nowrap;  */
+}
+
+/* Game-detail styles */
+
+.game-detail {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    padding: 3rem 0;
+}
+
+.game-detail h3 {
+    font-size: 2.5rem;
+}
+
+.detail-img {
+    background-color: var(--third-bg-color);
+    border: 1px solid black;
+    border-radius: 8px;
+    text-align: center;
+    padding: 2.5rem 2rem;
+    
+}
+
+.detail-img img {
+    width: 80%;
+}
+.detail-container {
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 8px;
+    background-color: var(--secondary-bg-color);
+    min-width: 600px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 }
 
