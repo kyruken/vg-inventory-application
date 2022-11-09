@@ -77,6 +77,10 @@ exports.game_form_post = [
     .trim()
     .isLength({min: 1})
     .escape(),
+    body("description", "Description must not be empty.")
+    .trim()
+    .isLength({min: 1})
+    .escape(),
     body("developer", "Developer must not be empty.")
     .trim()
     .isLength({min: 1})
