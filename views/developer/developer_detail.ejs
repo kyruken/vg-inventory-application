@@ -1,12 +1,16 @@
-<h3> <%= undefined===locals.developer ? '' : locals.message %></h3>
-<h3> <%= developer.name %> </h3>
-<h4> Games list</h4>
-<% for (const game in locals.games) { %>
-    <p><%= games[game].title %></p>
-    <p><%= games[game].esrb %></p>
-    <p>Release: <%= games[game].date %></p>
-    <p><%= games[game].price %></p>
-
-<% } %>
+<div class="title-container">
+    <h3> <%= undefined===locals.developer ? '' : locals.message %></h3>
+    <h3> <%= developer.name %> </h3>
+    <h4> Games list</h4>
+</div>
+<div class="content-container dark-box">
+    <% for (let x = 0; x < games.length; x++) { %>
+        <a href='<%= games[x].url %>' class="game">
+            <img src='<%=games[x].picture%>' alt='<%= games[x].name %>'/>
+            <p>$<%= games[x].price %></p>
+            <h3><%= games[x].title %></h3>
+        </a>
+    <% } %>
+</div>
 <a href="/games/developer_update/<%= developer._id %>"><button>Update developer</button></a>
 <a href="/games/developer_delete/<%= developer._id %>"><button>Delete developer</button></a>
