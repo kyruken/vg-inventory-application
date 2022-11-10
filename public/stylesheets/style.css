@@ -216,6 +216,7 @@ header {
 
 /* Game-detail styles */
 
+
 .game-detail {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -240,18 +241,18 @@ header {
 .detail-img img {
     width: 50%;
 }
+
+.detail-grid {
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+}
+
 .detail-container {
     border-top: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
     border-radius: 8px;
     background-color: var(--secondary-bg-color);
-
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
 }
 
 
@@ -283,7 +284,6 @@ header {
 
 .space-around {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 1rem;  
 }
