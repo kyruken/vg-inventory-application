@@ -62,6 +62,15 @@ h1 {
 h2 {
     font-size: 1.5rem;
 }
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
 p {
     font-size: 1.2rem;
 }
@@ -148,7 +157,9 @@ header {
 
 .content-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Changing to auto-fill makes it so that empty spots are still added when the grid is resized */
+    /* Auto-fit makes it that if theres one game in the grid, it will expand that game to fit the whole grid */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     justify-items: center;
     justify-content: center;
     row-gap: 2rem;
