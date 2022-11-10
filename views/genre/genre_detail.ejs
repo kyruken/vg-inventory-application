@@ -1,10 +1,12 @@
 <h3> <%= undefined===locals.genre ? '' : locals.message %></h3>
 <div class="title-container padding-tb1">
     <h3> <%= genre.name %> </h3>
-    <a href="/games/genre_update/<%= genre._id %>"><button>Update genre</button></a>
-    <a href="/games/genre_delete/<%= genre._id %>"><button>Delete genre</button></a>
+    <p> <%= genre.description %></p>
+    <div class="padding-tb1">
+        <a href="/games/genre_update/<%= genre._id %>"><button>Update genre</button></a>
+        <a href="/games/genre_delete/<%= genre._id %>"><button>Delete genre</button></a>
+    </div>
 </div>
-<p> <%= genre.description %></p>
 <h4>Games list</h4>
 <div class="content-container dark-box">
     <% for (let x = 0; x < games.length; x++) { %>
