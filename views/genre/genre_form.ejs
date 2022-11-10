@@ -1,9 +1,15 @@
 <h3><%= locals.message %></h3>
-<form method="POST" action=''>
-    <label for="name">
-        <input type="text" name="name" placeholder="Name" value="<%= undefined===locals.genre ? '' : genre.name %>">
-        <input type="text" name="description" placeholder="Description" value="<%= undefined===locals.genre ? '' : genre.description %>">
-
-    </label>
-    <button type="submit">Submit</button>
+<div class="flex-column dark-box">
+    <form method="POST" action='' class="flex-column padding-2">
+        <label for="name">
+            Name*
+        </label>
+            <input type="text" id="name" name="name" placeholder="Name" value="<%= undefined===locals.genre ? '' : genre.name %>">
+            <label for="description">
+                Description(30 char limit)
+            </label>
+            <input type="text" id="description" name="description" placeholder="Description" value="<%= undefined===locals.genre ? '' : genre.description %>" maxlength="30">
+    
+        <button type="submit">Submit</button>
+</div>
 </form>
