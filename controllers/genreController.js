@@ -90,6 +90,7 @@ exports.genre_delete_post = (req, res) => {
             if (result.games.length > 0) {
                 res.render('./genre/genre_detail', {
                     genre: result.genre,
+                    games: result.games,
                     message: "Cannot delete this genre. This genre currently has games on the database."
                 })
 
