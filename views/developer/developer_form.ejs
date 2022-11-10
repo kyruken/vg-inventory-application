@@ -1,7 +1,10 @@
 <h3><%= locals.message %></h3>
-<form method="POST" action=''>
-    <label for="name">
-        <input type="text" name="name" placeholder="Name" value="<%= undefined===locals.developer ? '' : developer.name %>">
-    </label>
-    <button type="submit">Submit</button>
-</form>
+<div class="flex-column dark-box">
+    <form method="POST" action='' class="flex-column padding-2">
+        <label for="name">
+            Name*
+        </label>
+            <input type="text" id="name" name="name" placeholder="Name" value="<%= undefined===locals.developer ? '' : developer.name %>">
+        <button type="submit">Submit</button>
+    </form>
+</div>
