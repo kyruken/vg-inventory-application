@@ -1,8 +1,10 @@
-<div class="title-container">
+<div class="title-container padding-tb1">
     <h3> <%= undefined===locals.developer ? '' : locals.message %></h3>
     <h3> <%= developer.name %> </h3>
-    <h4> Games list</h4>
+    <a href="/games/developer_update/<%= developer._id %>"><button>Update developer</button></a>
+    <a href="/games/developer_delete/<%= developer._id %>"><button>Delete developer</button></a>
 </div>
+<h4> Games list</h4>
 <div class="content-container dark-box">
     <% for (let x = 0; x < games.length; x++) { %>
         <a href='<%= games[x].url %>' class="game">
@@ -12,5 +14,3 @@
         </a>
     <% } %>
 </div>
-<a href="/games/developer_update/<%= developer._id %>"><button>Update developer</button></a>
-<a href="/games/developer_delete/<%= developer._id %>"><button>Delete developer</button></a>

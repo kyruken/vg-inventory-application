@@ -1,14 +1,17 @@
 <h3> <%= undefined===locals.genre ? '' : locals.message %></h3>
-<h3> <%= genre.name %> </h3>
+<div class="title-container padding-tb1">
+    <h3> <%= genre.name %> </h3>
+    <a href="/games/genre_update/<%= genre._id %>"><button>Update genre</button></a>
+    <a href="/games/genre_delete/<%= genre._id %>"><button>Delete genre</button></a>
+</div>
 <p> <%= genre.description %></p>
 <h4>Games list</h4>
-<% for (const game in locals.games) { %>
-    <p><%= games[game].title %></p>
-    <p><%= games[game].esrb %></p>
-    <p>Release: <%= games[game].date %></p>
-    <p><%= games[game].price %></p>
-
-<% } %>
-
-<a href="/games/genre_update/<%= genre._id %>"><button>Update genre</button></a>
-<a href="/games/genre_delete/<%= genre._id %>"><button>Delete genre</button></a>
+<div class="content-container dark-box">
+    <% for (let x = 0; x < games.length; x++) { %>
+        <a href='<%= games[x].url %>' class="game">
+            <img src='<%=games[x].picture%>' alt='<%= games[x].name %>'/>
+            <p>$<%= games[x].price %></p>
+            <h3><%= games[x].title %></h3>
+        </a>
+    <% } %>
+</div>
