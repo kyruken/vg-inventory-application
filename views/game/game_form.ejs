@@ -1,21 +1,38 @@
-<div class="content-container">
+<div class="flex-column dark-box">
     <h2><%= name %></h2>
-    <form method="POST" action='' enctype="multipart/form-data">
-        <label>
-            <input type="text" name="title" placeholder="title"
-            <% if (locals.game) { %>
-                value="<%= game.title %>" >
-    
-            <% } %>
+    <form method="POST" action='' enctype="multipart/form-data" class="flex-column padding-2">
+        <label for="title">
+            Title*
         </label>
-        <label>
-            <input type="text" name="description" placeholder="description"
+            <input type="text" name="title" placeholder="title" id="title"
             <% if (locals.game) { %>
-                value="<%= game.description %>" >
-    
-            <% } %>
+                value="<%= game.title %>"
+            <% } %> >
         </label>
-        <label>
+        <div>
+            <label for="release">
+                Release*
+            </label>
+                <!-- use locals.game to check if something is undefined, if you use game it gives EJS an error -->
+                <input type="date" id="release" name="release" placeholder="release" value="<%= undefined===locals.game ? '' : game.date_formatted %>">
+            <label for="price">
+                Price
+            </label>
+                <input type="number" id="price" name="price" placeholder="price" value="<%= undefined===locals.game ? '' : game.price %>">
+            <label for="picture">
+                Picture
+            </label>
+                <input type="text" id="picture" name="picture" placeholder="img url" value="<%= undefined===locals.game ? '' : game.picture %>">
+            
+        </div>
+        <label for="description">
+             Description
+        </label>
+            <input type="text" name="description" placeholder="description" id="description"
+            <% if (locals.game) { %>
+                value="<%= game.description %>"
+            <% } %> >
+        <label for="developer">
             <select name="developer" id="developer">
                 <% for (let x = 0; x < developers.length; x++) { %>
                     <!-- We check if our game developer's name object matches the result developer's name object-->
@@ -34,6 +51,7 @@
                 <% } %>
             </select>
         </label>
+
         <label>
             ESRB:
             <select name="esrb" id="esrb">
@@ -61,26 +79,19 @@
                 </option>
             </select>
         </label>
-        <label>
-            <% for (const x in genres) { %>
-                <%= genres[x].name %>
-                <input type="checkbox" value="<%= genres[x]._id %>" name="genre"
-                <% if (genres[x].checked) { %>
-                    checked
+        <label for="genre">
+            Genres
+        </label>
+            <div>
+                <% for (const x in genres) { %>
+                    <%= genres[x].name %>
+                    <input type="checkbox" value="<%= genres[x]._id %>" name="genre" id="genre"
+                    <% if (genres[x].checked) { %>
+                        checked
+                    <% } %>
+                    >
                 <% } %>
-                >
-            <% } %>
-        </label>
-        <label>
-            <!-- use locals.game to check if something is undefined, if you use game it gives EJS an error -->
-            <input type="date" name="release" placeholder="release" value="<%= undefined===locals.game ? '' : game.date_formatted %>">
-        </label>
-        <label>
-            <input type="number" name="price" placeholder="price" value="<%= undefined===locals.game ? '' : game.price %>">
-        </label>
-        <label>
-            <input type="text" name="picture" placeholder="img url" value="<%= undefined===locals.game ? '' : game.picture %>">
-        </label>
+            </div>
         <button type="submit">Submit</button>
     </form>
 </div>
