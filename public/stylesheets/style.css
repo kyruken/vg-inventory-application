@@ -253,6 +253,11 @@ header {
     border-bottom: 1px solid black;
     border-radius: 8px;
     background-color: var(--secondary-bg-color);
+    word-wrap: break-word;
+}
+
+.detail-container button {
+    padding: 0.5rem 0.8rem;
 }
 
 
