@@ -75,10 +75,11 @@ exports.game_form_post = [
 
     body("title", "Title must not be empty")
     .trim()
-    .isLength({min: 1})
+    .isLength({min: 1, max: 46})
     .escape(),
     body("description", "Description must not be empty")
     .trim()
+    .isLength({max: 256})
     .escape(),
     body("developer", "Developer must not be empty")
     .trim()
