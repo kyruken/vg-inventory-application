@@ -73,15 +73,14 @@ exports.game_form_post = [
         next();
     }, 
 
-    body("title", "Title must not be empty.")
+    body("title", "Title must not be empty")
     .trim()
     .isLength({min: 1})
     .escape(),
-    body("description", "Description must not be empty.")
+    body("description", "Description must not be empty")
     .trim()
-    .isLength({min: 1})
     .escape(),
-    body("developer", "Developer must not be empty.")
+    body("developer", "Developer must not be empty")
     .trim()
     .isLength({min: 1})
     .escape(),
@@ -92,7 +91,13 @@ exports.game_form_post = [
     .toDate(),
     
     (req, res, next) => {
-        const errors = validationResult(req);
+
+        const errorFormatter = ({ location, msg, param, value, nestedErrors }) => {
+            // Build your resulting errors however you want! String, object, whatever - it works!
+            return `* ${msg} *`;
+          };
+
+        const errors = validationResult(req).formatWith(errorFormatter);
         
         if(!errors.isEmpty()) {
             //if theres errors, reload the form page again with all the dev and genre data
@@ -113,8 +118,11 @@ exports.game_form_post = [
                     return next(err);
                 }
                 res.render('./game/game_form', 
-                {result: result,
-                 name: "Add a game"
+                {developers: result.developers,
+                 genres: result.genres,
+                 name: "Add a game",
+                 message: "Failed to add game to database",
+                 error: errors.array()
                 });
             })
             return;
